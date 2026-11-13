@@ -68,6 +68,10 @@ h2::after{content:"";flex:1;height:2px;background:var(--line)}
 .pill{display:inline-block;background:var(--acc);color:var(--accfg);border-radius:99px;padding:2px 10px;font-size:11px;margin-right:6px}
 .songs .card b{display:block}
 footer{text-align:center;color:var(--mut);font-size:12px;padding:28px 18px;border-top:1px solid var(--line)}
+.links{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px}.links a{border:1px solid var(--line);padding:6px 16px;border-radius:99px;color:var(--fg);text-decoration:none;font-size:14px;background:var(--card)}.links a:hover{border-color:var(--acc);color:var(--acc)}
+#admin textarea{font-size:13px}
+.pbtn{display:flex;gap:6px;justify-content:center;margin-top:8px}.pbtn .xdel{margin-top:0;font-size:12px;padding:5px 10px}
+.av{background-size:cover;background-position:center}
 </style>
 </head>
 <body>
@@ -76,9 +80,10 @@ footer{text-align:center;color:var(--mut);font-size:12px;padding:28px 18px;borde
 <div class="sw" id="lw"></div><div class="sw" id="sw" style="margin-left:6px"></div>
 </nav>
 <header class="hero">
-<div class="av">SC</div>
+<div class="av" id="av">SC</div>
 <h1>SUNGCHAN</h1>
 <p class="tag">Jung Sungchan (정성찬) · Main Rapper of RIIZE · SM Entertainment</p>
+<div class="links" id="lk"></div>
 </header>
 <main>
 <div id="home" class="grid"></div><div id="bar"></div>
@@ -86,7 +91,7 @@ footer{text-align:center;color:var(--mut);font-size:12px;padding:28px 18px;borde
 <section id="journey"><h2>Journey</h2><div class="tl" id="jr"></div></section>
 <section id="experience"><h2>Experience &amp; Projects</h2><div class="grid" id="ex"></div></section>
 <section id="brands"><h2>Brand Deals</h2><div class="grid" id="br"></div></section>
-<section id="watch"><h2>Watch</h2><p style="color:var(--mut);margin-top:-8px">Tap a card to find the video on YouTube.</p><div class="grid" id="mv"></div></section>
+<section id="watch"><h2>Watch</h2><p style="color:var(--mut);margin-top:-8px">Tap a card to open the video.</p><div class="grid" id="mv"></div></section>
 <section id="collabs"><h2>Collabs &amp; Hosting</h2><div class="tl" id="co"></div></section>
 <section id="news"><h2>Latest News</h2><div class="grid" id="nw"></div></section>
 <section id="admin"><h2>Admin</h2><p style="color:var(--mut);margin-top:-8px">Post news here. To add photos, open Gallery and tap a frame.</p><div class="card"><input id="nt" placeholder="Title"><input id="nd" placeholder="Date (e.g. Nov 13, 2026)"><textarea id="nb" rows="3" placeholder="Details"></textarea><button id="na">Post news</button> <button id="nc" style="display:none;background:var(--line);color:var(--fg)">Cancel edit</button></div>
@@ -99,6 +104,7 @@ footer{text-align:center;color:var(--mut);font-size:12px;padding:28px 18px;borde
 <footer>Unofficial fan-made website. Not affiliated with SM Entertainment. Info collected from public sources as of November 2026.</footer><button id="adl">⚙ Admin</button>
 <script>
 const D={
+lk:[["Spotify","https://open.spotify.com/search/RIIZE"],["YouTube","https://www.youtube.com/results?search_query=RIIZE+official"]],
 pf:[["Full name","Jung Sungchan (정성찬)"],["Birthday","13 September 2001"],["Zodiac","Virgo"],["MBTI","ESTP"],["Birthplace","Seoul (Gangnam-gu)"],["Group","RIIZE (since 2023)"],["Position","Main Rapper"],["Role model","Kai (EXO)"],["Blood type","A"],["Height","185 cm"],["Emoji","🐸"],["Agency","SM Entertainment"],["Fandom","BRIIZE"]],
 jr:[
 ["2016","Joins SM Entertainment as a trainee."],
@@ -163,10 +169,32 @@ $('lw').onclick=e=>{const k=e.target.dataset.k;if(!k)return;L=k;I=k==='menu'?nul
 const GC=["RIIZE debut, 2023","Inkigayo MC","Louis Vuitton","Samsung × CES 2026","Tokyo Dome, 2026","Fan moment"];
 let ADM=false,PH={},NW=[],C={},PW=sessionStorage.getItem('pw')||'',EDIT=null;
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function gal(){$('gl').innerHTML=GC.map((c,i)=>{const u=PH[i];const ph=`<div class="ph"${u?` style="background-image:url(${esc(u)})"`:''}>${u?'':(ADM?'+ Add photo':'Photo coming soon')}</div>`;return ADM?`<label class="card pol"><input type="file" accept="image/*" hidden data-i="${i}">${ph}<span class="cap">${c}</span></label>`:`<div class="card pol">${ph}<span class="cap">${c}</span></div>`}).join('')}
+const photos=()=>Array.isArray(C.photos)?C.photos:GC.map((c,i)=>({id:'g'+i,caption:c,url:(C.gallery||{})[i]||''}));
+const ensure=()=>(C.photos=photos().map(x=>({...x})));
+function gal(){const P=photos().filter(x=>ADM||x.url);let h=P.map(p=>{const ph=`<div class="ph"${p.url?` style="background-image:url(${esc(p.url)})"`:''}>${p.url?'':'+ Add photo'}</div>`;return ADM?`<div class="card pol"><label style="display:block;cursor:pointer"><input type="file" accept="image/*" hidden data-id="${esc(p.id)}">${ph}</label><span class="cap">${esc(p.caption||'')}</span><div class="pbtn"><button class="xdel" data-cap="${esc(p.id)}">Caption</button><button class="xdel" data-del="${esc(p.id)}">Delete</button></div></div>`:`<div class="card pol">${ph}<span class="cap">${esc(p.caption||'')}</span></div>`}).join('');
+if(ADM)h+=`<label class="card pol"><input type="file" accept="image/*" hidden data-new="1"><div class="ph">+ New photo</div><span class="cap">Add another</span></label>`;
+$('gl').innerHTML=h||'<p style="color:var(--mut)">Photos coming soon.</p>'}
 function news(){$('nw').innerHTML=NW.length?NW.map(n=>`<div class="card"><small>${esc(n.date||'')}</small><h3 style="margin:6px 0">${esc(n.title)}</h3><p style="margin:0;color:var(--mut);font-size:14px">${esc(n.body||'')}</p>${ADM?`<button class="xdel" data-e="${esc(n.id)}">Edit</button> <button class="xdel" data-id="${esc(n.id)}">Delete</button>`:''}</div>`).join(''):'<p style="color:var(--mut)">No news yet. Check back soon!</p>'}
 function prof(){const rows=PD?PD.split('\n').map(l=>{const i=l.indexOf(':');return i>0?[l.slice(0,i).trim(),l.slice(i+1).trim()]:null}).filter(Boolean):D.pf;$('pf').innerHTML=rows.map(([a,b])=>`<div class="card"><small>${esc(a)}</small><b>${esc(b)}</b></div>`).join('');$('pe').value=rows.map(r=>r[0]+': '+r[1]).join('\n')}
-function paint(){gal();news();jrn();prof()}
+const rowsOf=t=>String(t||'').split('\n').map(l=>l.split('|').map(x=>x.trim())).filter(r=>r[0]);
+const DEF={links:D.lk.map(r=>r.join(' | ')).join('\n'),mv:D.mv.map(r=>r.concat(['']).join(' | ')).join('\n'),br:D.br.map(r=>r.concat(['']).join(' | ')).join('\n'),sg:D.sg.map(r=>r.concat(['']).join(' | ')).join('\n')};
+const txt=k=>typeof C[k]==='string'?C[k]:DEF[k];
+const okUrl=u=>/^https?:\/\//.test(u||'');
+const wrap=(inner,u)=>okUrl(u)?`<a class="card mv" target="_blank" rel="noopener" href="${esc(u)}">${inner}</a>`:`<div class="card">${inner}</div>`;
+function lists(){
+$('lk').innerHTML=rowsOf(txt('links')).filter(r=>okUrl(r[1])).map(r=>`<a href="${esc(r[1])}" target="_blank" rel="noopener">${esc(r[0])}</a>`).join('');
+$('mv').innerHTML=rowsOf(txt('mv')).map(([t,g,y,u])=>{const h=okUrl(u)?u:'https://www.youtube.com/results?search_query='+encodeURIComponent((g||'')+' '+t+' MV');return `<a class="card mv" target="_blank" rel="noopener" href="${esc(h)}"><span class="play">▶</span><h3 style="margin:8px 0 2px">${esc(t)}</h3><span class="pill">${esc(g||'')}</span><small style="margin-top:6px">${esc(y||'')}</small></a>`}).join('');
+$('br').innerHTML=rowsOf(txt('br')).map(([n,r,d,u])=>wrap(`<b>${esc(n)}</b><small style="margin:4px 0 8px">${esc(r||'')}</small><span style="color:var(--mut);font-size:14px">${esc(d||'')}</span>`,u)).join('');
+$('sg').innerHTML=rowsOf(txt('sg')).map(([t,i,u])=>wrap(`<b>♪ ${esc(t)}</b><small>${esc(i||'')}</small>`,u)).join('');
+['links','mv','br','sg'].forEach(k=>{const e=$('x_'+k);if(e)e.value=txt(k)})}
+const AD=[['links','Links (Spotify, YouTube, ...)','Label | Link',4],['mv','Watch (MV and videos)','Title | Artist | Year | Link (optional)',10],['br','Brand Deals','Brand | Role | Description | Link (optional)',8],['sg','Songs','Title | Info | Link (optional)',10]];
+$('admin').insertAdjacentHTML('beforeend',AD.map(([k,h,f,n])=>`<h3 style="margin:24px 0 8px">${h}</h3><div class="card"><p style="margin:0 0 8px;color:var(--mut);font-size:13px">One per line: ${f}</p><textarea id="x_${k}" rows="${n}"></textarea><button data-sv="${k}">Save</button></div>`).join(''));
+$('admin').addEventListener('click',e=>{const k=e.target.dataset&&e.target.dataset.sv;if(k&&ADM)upd(()=>{C[k]=$('x_'+k).value})});
+function avatar(){const a=$('av');if(okUrl(C.avatar)){a.style.backgroundImage=`url("${C.avatar}")`;a.textContent=''}else{a.style.backgroundImage='';a.textContent='SC'}a.style.cursor=ADM?'pointer':'default'}
+$('admin').insertAdjacentHTML('beforeend','<h3 style="margin:24px 0 8px">Profile photo</h3><div class="card"><p style="margin:0 0 8px;color:var(--mut);font-size:13px">The round picture at the top. You can also tap it directly.</p><input type="file" id="avf" accept="image/*" hidden><button id="avb">Choose photo</button> <button id="avx" class="xdel">Remove</button></div>');
+$('avb').onclick=()=>$('avf').click();
+$('avx').onclick=()=>{if(ADM)upd(()=>{C.avatar=null})};
+function paint(){gal();news();jrn();prof();lists();avatar()}
 async function load(){try{const r=await fetch('/api/content',{cache:'no-store'});C=await r.json()}catch(e){C={}}
 PD=C.profile||null;JD=C.journey||null;JX=C.journeyAdds||[];NW=(C.news||[]).slice().sort((a,b)=>b.ts-a.ts);PH=C.gallery||{};paint()}
 async function save(){try{const r=await fetch('/api/content',{method:'POST',headers:{'content-type':'application/json','x-admin-password':PW},body:JSON.stringify(C)});if(!r.ok){alert(r.status===401?'Wrong password':'Could not save');return false}return true}catch(e){alert('Could not save');return false}}
@@ -174,7 +202,11 @@ async function upd(fn){fn();if(await save())await load()}
 function enter(){ADM=true;if(!S.some(s=>s[0]==='admin'))S.push(["admin","Admin","⚙️"]);paint()}
 function clr(){EDIT=null;$('nt').value=$('nd').value=$('nb').value='';$('na').textContent='Post news';$('nc').style.display='none'}
 async function shrink(f){const b=await createImageBitmap(f);const k=Math.min(1,1600/Math.max(b.width,b.height));const c=document.createElement('canvas');c.width=Math.round(b.width*k);c.height=Math.round(b.height*k);c.getContext('2d').drawImage(b,0,0,c.width,c.height);return new Promise(r=>c.toBlob(r,'image/jpeg',.85))}
-$('gl').addEventListener('change',async e=>{const f=e.target.files&&e.target.files[0],i=e.target.dataset.i;if(!f||!ADM)return;try{const blob=await shrink(f);const r=await fetch('/api/upload',{method:'POST',headers:{'content-type':'image/jpeg','x-admin-password':PW},body:blob});if(!r.ok)throw 0;const j=await r.json();upd(()=>{C.gallery=C.gallery||{};C.gallery[i]=j.url})}catch(x){alert('Upload failed')}});
+async function up(f){let blob;try{blob=await shrink(f)}catch(z){if(!/^image\/(jpeg|png|webp)$/.test(f.type)||f.size>4e6)throw new Error('Cannot read this image. Use a JPG or PNG under 4 MB.');blob=f}const r=await fetch('/api/upload',{method:'POST',headers:{'content-type':blob.type||'image/jpeg','x-admin-password':PW},body:blob});if(!r.ok){let m='';try{m=(await r.json()).error}catch(z){}throw new Error(m||('Server error '+r.status))}return (await r.json()).url}
+$('gl').addEventListener('change',async e=>{const f=e.target.files&&e.target.files[0];if(!f||!ADM)return;const id=e.target.dataset.id,isNew=e.target.dataset.new;try{const url=await up(f);if(isNew){const cap=prompt('Caption for this photo (e.g. Allure Korea, March 2026)','')||'';upd(()=>{ensure().push({id:Date.now().toString(36),caption:cap,url})})}else upd(()=>{const x=ensure().find(y=>y.id===id);if(x)x.url=url})}catch(x){alert('Upload failed: '+x.message)}});
+$('gl').addEventListener('click',e=>{const b=e.target.closest('[data-cap],[data-del]');if(!b||!ADM)return;e.preventDefault();if(b.dataset.cap){const x=photos().find(y=>y.id===b.dataset.cap);const c=prompt('Caption',x?x.caption:'');if(c===null)return;upd(()=>{const y=ensure().find(z=>z.id===b.dataset.cap);if(y)y.caption=c})}else if(confirm('Delete this photo?'))upd(()=>{C.photos=ensure().filter(z=>z.id!==b.dataset.del)})});
+$('avf').addEventListener('change',async e=>{const f=e.target.files&&e.target.files[0];if(!f||!ADM)return;try{const url=await up(f);upd(()=>{C.avatar=url})}catch(x){alert('Upload failed: '+x.message)}e.target.value=''});
+$('av').onclick=()=>{if(ADM)$('avf').click()};
 $('nw').onclick=e=>{const b=e.target.closest('.xdel');if(!b||!ADM)return;if(b.dataset.e){const n=NW.find(x=>x.id===b.dataset.e);if(!n)return;EDIT=n.id;$('nt').value=n.title||'';$('nd').value=n.date||'';$('nb').value=n.body||'';$('na').textContent='Save changes';$('nc').style.display='inline-block';go(S.findIndex(s=>s[0]==='admin'))}else if(b.dataset.id)upd(()=>{C.news=(C.news||[]).filter(x=>x.id!==b.dataset.id)})};
 $('nc').onclick=clr;
 $('na').onclick=()=>{const t=$('nt').value.trim();if(!t||!ADM)return;const d={title:t,date:$('nd').value.trim(),body:$('nb').value.trim()};upd(()=>{C.news=C.news||[];if(EDIT){const n=C.news.find(x=>x.id===EDIT);if(n)Object.assign(n,d)}else C.news.push({...d,id:Date.now().toString(36),ts:Date.now()})});clr()};
