@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="clean">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sungchan (RIIZE) — Fan Site</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+:root,[data-theme="clean"]{--bg:#fff;--fg:#1b1b1b;--mut:#6b6b66;--card:#fff;--line:#ececea;--acc:#e8590c;--accfg:#fff;--hero:#fff;--ff:Georgia,'Times New Roman',serif;--fb:system-ui,-apple-system,'Segoe UI',sans-serif;--r:4px;--glow:none}
+[data-theme="dark"]{--bg:#0b0b10;--fg:#f2f2f7;--mut:#9a9aa8;--card:#14141c;--line:#262633;--acc:#ff7a1a;--accfg:#0b0b10;--hero:radial-gradient(circle at 70% 20%,#3a1d0a,#0b0b10 60%);--ff:Impact,'Arial Black',sans-serif;--fb:system-ui,-apple-system,'Segoe UI',sans-serif;--r:2px;--glow:0 0 24px rgba(255,122,26,.35)}
+[data-theme="soft"]{--bg:#fff6f0;--fg:#4a3040;--mut:#8c6f7e;--card:#fff;--line:#f5d9d0;--acc:#ff8a65;--accfg:#fff;--hero:linear-gradient(135deg,#ffe3d6,#ffd6e5 60%,#fff6f0);--ff:'Trebuchet MS','Comic Sans MS',sans-serif;--fb:'Trebuchet MS',system-ui,sans-serif;--r:18px;--glow:0 6px 18px rgba(255,138,101,.25)}
+[data-theme="scrapbook"]{--bg:#e6d3ae;--fg:#3b2f25;--mut:#7a6650;--card:#fffdf6;--line:#c9a97a;--acc:#d6453d;--accfg:#fff;--hero:linear-gradient(135deg,#f1e2c0,#e6d3ae);--ff:'Segoe Print','Bradley Hand','Marker Felt','Comic Sans MS',cursive;--fb:'Segoe Print','Bradley Hand','Comic Sans MS',cursive;--r:2px;--glow:2px 4px 8px rgba(60,40,20,.25)}
+[data-theme="scrapbook"] body{background-image:radial-gradient(rgba(120,90,50,.15) 1px,transparent 1px);background-size:14px 14px}
+[data-theme="scrapbook"] .card{position:relative;border:none;margin-top:10px}
+[data-theme="scrapbook"] .card:nth-child(3n+1){transform:rotate(-1.6deg)}
+[data-theme="scrapbook"] .card:nth-child(3n+2){transform:rotate(1.2deg)}
+[data-theme="scrapbook"] .card:nth-child(3n){transform:rotate(-.5deg)}
+[data-theme="scrapbook"] .card::before{content:"";position:absolute;top:-11px;left:50%;width:72px;height:20px;margin-left:-36px;background:rgba(255,205,90,.75);transform:rotate(-3deg)}
+[data-theme="scrapbook"] .av{border:8px solid #fff;border-radius:4px;transform:rotate(-4deg)}
+[data-theme="scrapbook"] h2::after{background:none;border-top:2px dashed var(--line);height:0}
+[data-theme="scrapbook"] .pill{border-radius:2px;transform:rotate(-2deg)}
+.mv{display:block;color:inherit;text-decoration:none}.mv:hover{outline:2px solid var(--acc)}.play{font-size:30px;color:var(--acc);line-height:1}
+main section{display:none}main section.on{display:block;animation:pg .35s}
+@keyframes pg{from{opacity:0;transform:translateX(24px) rotate(1deg)}to{opacity:1;transform:none}}
+#home{display:none;padding-top:40px}#home.on{display:grid}
+#bar{display:none;align-items:center;justify-content:space-between;gap:10px;padding:16px 0 0}#bar.on{display:flex}
+#bar button,.hm{border:1px solid var(--line);background:var(--card);color:var(--fg);padding:8px 14px;border-radius:var(--r);cursor:pointer;font:inherit;font-size:14px}
+#bar button:disabled{opacity:.35;cursor:default}
+.hm{text-align:left;padding:24px;box-shadow:var(--glow)}.hm span{display:block;font-size:30px}.hm b{display:block;font:700 20px var(--ff);margin-top:6px}.hm small{color:var(--mut)}
+nav a.on{color:var(--acc);font-weight:700}
+.pol{display:block;cursor:pointer;padding:12px 12px 8px;background:#fff}.ph{aspect-ratio:1;background:var(--line) center/cover;display:grid;place-items:center;color:var(--mut);font-size:14px}.cap{display:block;text-align:center;margin-top:8px;font-size:14px;color:#3b2f25}
+.sw{display:none!important}
+.ers{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.ers button{border:1px solid var(--line);background:var(--card);color:var(--fg);padding:6px 14px;border-radius:99px;cursor:pointer;font:inherit;font-size:14px}.ers button.on{background:var(--acc);color:var(--accfg);border-color:var(--acc)}
+#admin input,#admin textarea{display:block;width:100%;margin-bottom:8px;padding:8px;border:1px solid var(--line);border-radius:var(--r);font:inherit;background:var(--bg);color:var(--fg)}
+#admin button,.xdel{border:0;background:var(--acc);color:var(--accfg);padding:8px 16px;border-radius:var(--r);cursor:pointer;font:inherit;font-size:13px}.xdel{margin-top:10px;background:var(--line);color:var(--fg)}
+#gallery .pol{position:relative;border:none;box-shadow:2px 4px 10px rgba(0,0,0,.18);margin-top:12px}
+#gallery .pol:nth-child(3n+1){transform:rotate(-2deg)}#gallery .pol:nth-child(3n+2){transform:rotate(1.5deg)}#gallery .pol:nth-child(3n){transform:rotate(-.6deg)}
+#gallery .pol::before{content:"";position:absolute;top:-11px;left:50%;width:70px;height:20px;margin-left:-35px;background:rgba(255,205,90,.75);transform:rotate(-3deg)}
+#gallery .cap{font-family:'Segoe Print','Bradley Hand','Comic Sans MS',cursive}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--fb);line-height:1.6;transition:background .3s,color .3s}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;gap:14px;align-items:center;padding:10px 16px;background:var(--bg);border-bottom:1px solid var(--line);overflow-x:auto;white-space:nowrap}
+nav a{color:var(--mut);text-decoration:none;font-size:14px}
+nav a:hover{color:var(--acc)}
+.sw{margin-left:auto;display:flex;gap:6px}
+.sw button{border:1px solid var(--line);background:var(--card);color:var(--fg);padding:5px 10px;border-radius:var(--r);cursor:pointer;font-size:12px}
+.sw button.on{background:var(--acc);color:var(--accfg);border-color:var(--acc)}
+.hero{background:var(--hero);padding:34px 20px 28px;text-align:center}
+.av{width:140px;height:140px;border-radius:50%;margin:0 auto 18px;background:var(--acc);color:var(--accfg);display:grid;place-items:center;font:700 52px var(--ff);box-shadow:var(--glow)}
+h1{font:700 clamp(36px,8vw,68px)/1.05 var(--ff);margin:0 0 8px;letter-spacing:.5px}
+.tag{color:var(--mut);max-width:520px;margin:0 auto}
+main{max-width:920px;margin:0 auto;padding:0 18px 48px}
+section{padding-top:48px}
+h2{font:700 28px var(--ff);margin:0 0 18px;display:flex;align-items:center;gap:10px}
+h2::after{content:"";flex:1;height:2px;background:var(--line)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;box-shadow:var(--glow)}
+.card small{display:block;color:var(--mut);font-size:12px;text-transform:uppercase;letter-spacing:.08em}
+.card b{font-size:18px}
+.tl{border-left:3px solid var(--acc);padding-left:18px;margin-left:6px}
+.tl .it{position:relative;margin-bottom:20px}
+.tl .it::before{content:"";position:absolute;left:-26px;top:7px;width:11px;height:11px;border-radius:50%;background:var(--acc)}
+.yr{color:var(--acc);font-weight:700;font-size:14px}
+.it p{margin:2px 0 0;color:var(--mut)}
+.it h3{margin:0;font-size:17px}
+.pill{display:inline-block;background:var(--acc);color:var(--accfg);border-radius:99px;padding:2px 10px;font-size:11px;margin-right:6px}
+.songs .card b{display:block}
+footer{text-align:center;color:var(--mut);font-size:12px;padding:28px 18px;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+<nav>
+<a href="#news">News</a><a href="#profile">Profile</a><a href="#gallery">Gallery</a><a href="#journey">Journey</a><a href="#experience">Experience</a><a href="#brands">Brand Deals</a><a href="#watch">Watch</a><a href="#collabs">Collabs</a><a href="#songs">Songs</a>
+<a href="#admin" id="adl" style="display:none;margin-left:auto">Admin</a><div class="sw" id="lw"></div><div class="sw" id="sw" style="margin-left:6px"></div>
+</nav>
+<header class="hero">
+<div class="av">SC</div>
+<h1>SUNGCHAN</h1>
+<p class="tag">Jung Sungchan (정성찬) · Rapper and dancer of RIIZE · SM Entertainment</p>
+</header>
+<main>
+<div id="home" class="grid"></div><div id="bar"></div>
+<section id="profile"><h2>Profile</h2><div class="grid" id="pf"></div></section>
+<section id="journey"><h2>Journey</h2><div class="ers" id="ert"></div><div class="tl" id="jr"></div></section>
+<section id="experience"><h2>Experience &amp; Projects</h2><div class="grid" id="ex"></div></section>
+<section id="brands"><h2>Brand Deals</h2><div class="grid" id="br"></div></section>
+<section id="watch"><h2>Watch</h2><p style="color:var(--mut);margin-top:-8px">Tap a card to find the video on YouTube.</p><div class="grid" id="mv"></div></section>
+<section id="collabs"><h2>Collabs &amp; Hosting</h2><div class="tl" id="co"></div></section>
+<section id="news"><h2>Latest News</h2><div class="grid" id="nw"></div></section>
+<section id="admin"><h2>Admin</h2><p style="color:var(--mut);margin-top:-8px">Post news here. To add photos, open Gallery and tap a frame.</p><div class="card"><input id="nt" placeholder="Title"><input id="nd" placeholder="Date (e.g. Nov 13, 2026)"><textarea id="nb" rows="3" placeholder="Details"></textarea><button id="na">Post news</button></div></section>
+<section id="gallery"><h2>Gallery</h2><p style="color:var(--mut);margin-top:-8px">Moments from the journey.</p><div class="grid" id="gl"></div></section>
+<section id="songs"><h2>Songs</h2><div class="grid songs" id="sg"></div></section>
+</main>
+<footer>Unofficial fan-made website. Not affiliated with SM Entertainment. Info collected from public sources as of November 2026.</footer>
+<script>
+const D={
+pf:[["Full name","Jung Sungchan (정성찬)"],["Birthday","13 September 2001"],["Birthplace","Seoul, South Korea"],["Zodiac","Virgo"],["Group","RIIZE (since 2023)"],["Former group","NCT / NCT U"],["Agency","SM Entertainment"],["Fandom","BRIIZE"]],
+jr:[
+["2016","Joins SM Entertainment as a trainee."],
+["2020","Debuts with NCT U in October."],
+["2021–2022","Becomes an MC of SBS Inkigayo with Jihoon and Ahn Yujin."],
+["May 2023","SM announces he will leave NCT to join a new boy group."],
+["Aug 2023","Introduced as a member of RIIZE."],
+["Sep 4, 2023","RIIZE debuts with the single “Get A Guitar”."],
+["2025","Odyssey, RIIZE’s first full-length album, and the RIIZING LOUD concert tour."],
+["Feb 2026","RIIZE plays three days at Tokyo Dome. Sungchan also covers Allure Korea’s March issue."],
+["Jul 2026","Second album “II” comes out and tops the Oricon weekly chart in Japan."],
+["Oct 2026","RIIZE releases the acoustic single “Insomnia”. A second full-length album is planned for spring 2027."]],
+ex:[
+["Host","SBS Inkigayo","MC, 2021–2022 and special MC in 2023."],
+["Host","Star Road: NCT","Main host, 2020."],
+["Host","Welcome to NCT Universe","Hosted with Shotaro."],
+["Solo MC","Sungchan’s Interview","His first solo MC YouTube show, 5 episodes from June 2026."],
+["Host","2026 SBS Gayo Daejeon Summer","MC with Ian (Hearts2Hearts) and Sion (NCT WISH)."],
+["Cinema","RIIZE Odyssey Premiere / RIIZING LOUD in Cinemas","Appears as himself, 2025."],
+["Music video","“Free to Fly” by Kangta","Appearance, 2021."]],
+br:[
+["Louis Vuitton","House ambassador (with RIIZE)","Group ambassador for the French luxury house."],
+["Samsung Electronics","Global ambassador (with RIIZE)","Announced May 2025. Includes a Galaxy Watch8 ad and a CES 2026 event in Las Vegas."],
+["Bench","Endorser (with RIIZE)","Filipino clothing brand."],
+["Allure Korea","Solo cover, March 2026","Three cover versions."]],
+sg:[
+["Get A Guitar","Debut single, 2023"],["Siren","RIIZE"],["Impossible","RIIZE, 2024"],["Boom Boom Bass","RIIZE, 2024"],["Love 119 (Japanese ver.)","Digital single, Jan 2024"],["Lucky","RIIZE, 2024"],["Same Key","OST, 2024"],["SEALOOK OST","OST, 2023"],["Insomnia","Acoustic single, Oct 2026"]]};
+const $=i=>document.getElementById(i);
+D.mv=[["Get A Guitar","RIIZE","2023 · Debut"],["Siren","RIIZE","2023"],["Love 119","RIIZE","2024"],["Boom Boom Bass","RIIZE","2024"],["Impossible","RIIZE","2024"],["Insomnia","RIIZE","Oct 2026"],["Misfit","NCT U","2020"],["Light Bulb","NCT U","2020"],["Free to Fly","Kangta","2021 · MV appearance"]];
+D.co=[["2020","Main host of Star Road: NCT."],["2021–2022","SBS Inkigayo MC with Jihoon (Treasure) and Ahn Yujin (IZ*ONE)."],["2022","Joins SMTOWN collab “Jet” with Giselle, Winter, Eunhyuk, HYO, Taeyong and Jaemin."],["2022","Hosts Welcome to NCT Universe with Shotaro."],["2023","Inkigayo special MC with Park Ji-hu and Woonhak (Sep 17 and Nov 5)."],["Jul 2026","MC of 2026 SBS Gayo Daejeon Summer with Ian and Sion."]];
+$('mv').innerHTML=D.mv.map(([t,g,y])=>`<a class="card mv" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=${encodeURIComponent(g+' '+t+' MV')}"><span class="play">▶</span><h3 style="margin:8px 0 2px">${t}</h3><span class="pill">${g}</span><small style="margin-top:6px">${y}</small></a>`).join('');
+$('co').innerHTML=D.co.map(([y,t])=>`<div class="it"><span class="yr">${y}</span><p style="color:var(--fg)">${t}</p></div>`).join('');
+$('pf').innerHTML=D.pf.map(([a,b])=>`<div class="card"><small>${a}</small><b>${b}</b></div>`).join('');
+const ER=[["Trainee & NCT",0,4],["RIIZE 2023–2025",4,7],["2026 & now",7,10]];
+$('ert').innerHTML=ER.map(([n],i)=>`<button data-i="${i}">${n}</button>`).join('');
+function era(n){$('jr').innerHTML=D.jr.slice(ER[n][1],ER[n][2]).map(([y,t])=>`<div class="it"><span class="yr">${y}</span><p style="color:var(--fg)">${t}</p></div>`).join('');[...$('ert').children].forEach((b,i)=>b.classList.toggle('on',i===n))}
+$('ert').onclick=e=>{if(e.target.dataset.i)era(+e.target.dataset.i)};era(0);
+$('ex').innerHTML=D.ex.map(([k,t,d])=>`<div class="card"><span class="pill">${k}</span><h3 style="margin:8px 0 4px">${t}</h3><p style="margin:0;color:var(--mut);font-size:14px">${d}</p></div>`).join('');
+$('br').innerHTML=D.br.map(([n,r,d])=>`<div class="card"><b>${n}</b><small style="margin:4px 0 8px">${r}</small><span style="color:var(--mut);font-size:14px">${d}</span></div>`).join('');
+$('sg').innerHTML=D.sg.map(([t,s])=>`<div class="card"><b>♪ ${t}</b><small>${s}</small></div>`).join('');
+const T=[["clean","Clean"],["dark","Dark"],["soft","Soft"],["scrapbook","Scrapbook"]];
+$('sw').innerHTML=T.map(([k,n])=>`<button data-k="${k}" class="${k==='scrapbook'?'on':''}">${n}</button>`).join('');
+$('sw').onclick=e=>{const k=e.target.dataset.k;if(!k)return;document.documentElement.dataset.theme=k;[...$('sw').children].forEach(b=>b.classList.toggle('on',b.dataset.k===k))};
+const S=[["news","News","📰"],["profile","Profile","🪪"],["gallery","Gallery","📸"],["journey","Journey","🛤️"],["experience","Experience","🎬"],["brands","Brand Deals","💎"],["watch","Watch","▶️"],["collabs","Collabs","🤝"],["songs","Songs","🎵"]];
+let L='tabs',I=0;
+$('lw').innerHTML=[["tabs","Tabs"],["book","Book"],["menu","Menu"]].map(([k,n])=>`<button data-k="${k}">${n}</button>`).join('');
+$('home').innerHTML=S.map(([id,n,e],i)=>`<button class="hm card" data-i="${i}"><span>${e}</span><b>${n}</b><small>Open</small></button>`).join('');
+function render(){
+ document.documentElement.dataset.layout=L;
+ [...$('lw').children].forEach(b=>b.classList.toggle('on',b.dataset.k===L));
+ S.forEach(([id],i)=>$(id).classList.toggle('on',I===i));
+ $('home').classList.toggle('on',L==='menu'&&I===null);
+ const bar=$('bar');
+ if(L==='book'){bar.className='on';bar.innerHTML=`<button id="pv" ${I===0?'disabled':''}>← Prev</button><span>${I+1} / ${S.length} · ${S[I][1]}</span><button id="nx" ${I===S.length-1?'disabled':''}>Next →</button>`;$('pv').onclick=()=>go(I-1);$('nx').onclick=()=>go(I+1)}
+ else if(L==='menu'&&I!==null){bar.className='on';bar.innerHTML=`<button id="bk">← Menu</button><span>${S[I][1]}</span><span></span>`;$('bk').onclick=()=>go(null)}
+ else bar.className='';
+ document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('on',I!==null&&a.getAttribute('href')==='#'+S[I][0]));
+}
+function go(i){I=i;render();window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelector('nav').addEventListener('click',e=>{const a=e.target.closest('a');if(!a)return;e.preventDefault();go(S.findIndex(s=>'#'+s[0]===a.getAttribute('href')))});
+$('home').onclick=e=>{const b=e.target.closest('.hm');if(b)go(+b.dataset.i)};
+$('lw').onclick=e=>{const k=e.target.dataset.k;if(!k)return;L=k;I=k==='menu'?null:(I??0);render()};
+const GC=["RIIZE debut, 2023","Inkigayo MC","Louis Vuitton","Samsung × CES 2026","Tokyo Dome, 2026","Fan moment"];
+let ADM=false,DB=null,AS=null,PH={},NW=[];
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function gal(){$('gl').innerHTML=GC.map((c,i)=>{const u=PH[i];const ph=`<div class="ph"${u?` style="background-image:url(${esc(u)})"`:''}>${u?'':(ADM?'+ Add photo':'Photo coming soon')}</div>`;return ADM?`<label class="card pol"><input type="file" accept="image/*" hidden data-i="${i}">${ph}<span class="cap">${c}</span></label>`:`<div class="card pol">${ph}<span class="cap">${c}</span></div>`}).join('')}
+function news(){$('nw').innerHTML=NW.length?NW.map(n=>`<div class="card"><small>${esc(n.date||'')}</small><h3 style="margin:6px 0">${esc(n.title)}</h3><p style="margin:0;color:var(--mut);font-size:14px">${esc(n.body||'')}</p>${ADM?`<button class="xdel" data-id="${esc(n.id)}">Delete</button>`:''}</div>`).join(''):'<p style="color:var(--mut)">No news yet. Check back soon!</p>'}
+gal();news();
+$('gl').addEventListener('change',async e=>{const f=e.target.files&&e.target.files[0],i=e.target.dataset.i;if(!f||!DB||!AS)return;try{const r=await AS.upload(f);await DB.doc('gallery/s'+i).set({url:r.url,id:r.id})}catch(x){alert('Upload failed')}});
+$('nw').onclick=e=>{const b=e.target.closest('.xdel');if(b&&DB)DB.doc('news/'+b.dataset.id).delete()};
+$('na').onclick=async()=>{const t=$('nt').value.trim();if(!t||!DB)return;try{await DB.collection('news').add({title:t,date:$('nd').value.trim(),body:$('nb').value.trim(),ts:Date.now()});$('nt').value=$('nd').value=$('nb').value=''}catch(x){alert('Could not post')}};
+(async()=>{try{const [u,d,a]=await Promise.all([claude.use('user'),claude.use('db'),claude.use('assets')]);DB=d;AS=a;ADM=!!(u&&u.canEdit());
+if(ADM){S.push(["admin","Admin","⚙️"]);$('adl').style.display='inline'}
+if(DB){DB.collection('gallery').onSnapshot(s=>{PH={};s.docs.forEach(x=>{PH[+x.id.slice(1)]=x.data().url});gal()});DB.collection('news').orderBy('ts','desc').onSnapshot(s=>{NW=s.docs.map(x=>({id:x.id,...x.data()}));news()})}
+gal();news();render()}catch(e){}})();
+render();
+</script>
+</body>
+</html>
