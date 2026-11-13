@@ -72,30 +72,31 @@ footer{text-align:center;color:var(--mut);font-size:12px;padding:28px 18px;borde
 <body>
 <nav>
 <a href="#news">News</a><a href="#profile">Profile</a><a href="#gallery">Gallery</a><a href="#journey">Journey</a><a href="#experience">Experience</a><a href="#brands">Brand Deals</a><a href="#watch">Watch</a><a href="#collabs">Collabs</a><a href="#songs">Songs</a>
-<a href="#admin" id="adl" style="display:none;margin-left:auto">Admin</a><div class="sw" id="lw"></div><div class="sw" id="sw" style="margin-left:6px"></div>
+<div class="sw" id="lw"></div><div class="sw" id="sw" style="margin-left:6px"></div>
 </nav>
 <header class="hero">
 <div class="av">SC</div>
 <h1>SUNGCHAN</h1>
-<p class="tag">Jung Sungchan (정성찬) · Rapper and dancer of RIIZE · SM Entertainment</p>
+<p class="tag">Jung Sungchan (정성찬) · Main Rapper of RIIZE · SM Entertainment</p>
 </header>
 <main>
 <div id="home" class="grid"></div><div id="bar"></div>
 <section id="profile"><h2>Profile</h2><div class="grid" id="pf"></div></section>
-<section id="journey"><h2>Journey</h2><div class="ers" id="ert"></div><div class="tl" id="jr"></div></section>
+<section id="journey"><h2>Journey</h2><div class="tl" id="jr"></div></section>
 <section id="experience"><h2>Experience &amp; Projects</h2><div class="grid" id="ex"></div></section>
 <section id="brands"><h2>Brand Deals</h2><div class="grid" id="br"></div></section>
 <section id="watch"><h2>Watch</h2><p style="color:var(--mut);margin-top:-8px">Tap a card to find the video on YouTube.</p><div class="grid" id="mv"></div></section>
 <section id="collabs"><h2>Collabs &amp; Hosting</h2><div class="tl" id="co"></div></section>
 <section id="news"><h2>Latest News</h2><div class="grid" id="nw"></div></section>
-<section id="admin"><h2>Admin</h2><p style="color:var(--mut);margin-top:-8px">Post news here. To add photos, open Gallery and tap a frame.</p><div class="card"><input id="nt" placeholder="Title"><input id="nd" placeholder="Date (e.g. Nov 13, 2026)"><textarea id="nb" rows="3" placeholder="Details"></textarea><button id="na">Post news</button></div></section>
+<section id="admin"><h2>Admin</h2><p style="color:var(--mut);margin-top:-8px">Post news here. To add photos, open Gallery and tap a frame.</p><div class="card"><input id="nt" placeholder="Title"><input id="nd" placeholder="Date (e.g. Nov 13, 2026)"><textarea id="nb" rows="3" placeholder="Details"></textarea><button id="na">Post news</button> <button id="nc" style="display:none;background:var(--line);color:var(--fg)">Cancel edit</button></div>
+<h3 style="margin:24px 0 8px">Add to Journey</h3><div class="card"><input id="jy" placeholder="Year or date (e.g. Nov 2026)"><textarea id="jt" rows="2" placeholder="What happened"></textarea><button id="ja">Add to Journey</button></div></section>
 <section id="gallery"><h2>Gallery</h2><p style="color:var(--mut);margin-top:-8px">Moments from the journey.</p><div class="grid" id="gl"></div></section>
 <section id="songs"><h2>Songs</h2><div class="grid songs" id="sg"></div></section>
 </main>
-<footer>Unofficial fan-made website. Not affiliated with SM Entertainment. Info collected from public sources as of November 2026.</footer>
+<footer>Unofficial fan-made website. Not affiliated with SM Entertainment. Info collected from public sources as of November 2026.<br><a href="#admin" id="adl" style="display:none;color:var(--mut)">Admin</a></footer>
 <script>
 const D={
-pf:[["Full name","Jung Sungchan (정성찬)"],["Birthday","13 September 2001"],["Birthplace","Seoul, South Korea"],["Zodiac","Virgo"],["Group","RIIZE (since 2023)"],["Former group","NCT / NCT U"],["Agency","SM Entertainment"],["Fandom","BRIIZE"]],
+pf:[["Full name","Jung Sungchan (정성찬)"],["Birthday","13 September 2001"],["Zodiac","Virgo"],["MBTI","ESTP"],["Birthplace","Seoul (Gangnam-gu)"],["Group","RIIZE (since 2023)"],["Position","Main Rapper"],["Role model","Kai (EXO)"],["Blood type","A"],["Height","185 cm"],["Emoji","🐸"],["Agency","SM Entertainment"],["Fandom","BRIIZE"]],
 jr:[
 ["2016","Joins SM Entertainment as a trainee."],
 ["2020","Debuts with NCT U in October."],
@@ -119,19 +120,18 @@ br:[
 ["Louis Vuitton","House ambassador (with RIIZE)","Group ambassador for the French luxury house."],
 ["Samsung Electronics","Global ambassador (with RIIZE)","Announced May 2025. Includes a Galaxy Watch8 ad and a CES 2026 event in Las Vegas."],
 ["Bench","Endorser (with RIIZE)","Filipino clothing brand."],
-["Allure Korea","Solo cover, March 2026","Three cover versions."]],
+["Dr.G & Round A’Round","Brand model, 2021","Korean skincare brands."],["SPAO","Brand model, 2022","Korean clothing brand."],["Allure Korea","Solo cover, March 2026","Three cover versions."]],
 sg:[
-["Get A Guitar","Debut single, 2023"],["Siren","RIIZE"],["Impossible","RIIZE, 2024"],["Boom Boom Bass","RIIZE, 2024"],["Love 119 (Japanese ver.)","Digital single, Jan 2024"],["Lucky","RIIZE, 2024"],["Same Key","OST, 2024"],["SEALOOK OST","OST, 2023"],["Insomnia","Acoustic single, Oct 2026"]]};
+["Get A Guitar","Debut single, 2023"],["Siren","RIIZE"],["Impossible","RIIZE, 2024"],["Boom Boom Bass","RIIZE, 2024"],["Love 119 (Japanese ver.)","Digital single, Jan 2024"],["Lucky","RIIZE, 2024"],["Same Key","OST, 2024"],["SEALOOK OST","OST, 2023"],["Insomnia","Acoustic single, Oct 2026"],["Alive","hrtz.wav ft. Sungchan, Sep 2026"]]};
 const $=i=>document.getElementById(i);
 D.mv=[["Get A Guitar","RIIZE","2023 · Debut"],["Siren","RIIZE","2023"],["Love 119","RIIZE","2024"],["Boom Boom Bass","RIIZE","2024"],["Impossible","RIIZE","2024"],["Insomnia","RIIZE","Oct 2026"],["Misfit","NCT U","2020"],["Light Bulb","NCT U","2020"],["Free to Fly","Kangta","2021 · MV appearance"]];
 D.co=[["2020","Main host of Star Road: NCT."],["2021–2022","SBS Inkigayo MC with Jihoon (Treasure) and Ahn Yujin (IZ*ONE)."],["2022","Joins SMTOWN collab “Jet” with Giselle, Winter, Eunhyuk, HYO, Taeyong and Jaemin."],["2022","Hosts Welcome to NCT Universe with Shotaro."],["2023","Inkigayo special MC with Park Ji-hu and Woonhak (Sep 17 and Nov 5)."],["Jul 2026","MC of 2026 SBS Gayo Daejeon Summer with Ian and Sion."]];
 $('mv').innerHTML=D.mv.map(([t,g,y])=>`<a class="card mv" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=${encodeURIComponent(g+' '+t+' MV')}"><span class="play">▶</span><h3 style="margin:8px 0 2px">${t}</h3><span class="pill">${g}</span><small style="margin-top:6px">${y}</small></a>`).join('');
 $('co').innerHTML=D.co.map(([y,t])=>`<div class="it"><span class="yr">${y}</span><p style="color:var(--fg)">${t}</p></div>`).join('');
 $('pf').innerHTML=D.pf.map(([a,b])=>`<div class="card"><small>${a}</small><b>${b}</b></div>`).join('');
-const ER=[["Trainee & NCT",0,4],["RIIZE 2023–2025",4,7],["2026 & now",7,10]];
-$('ert').innerHTML=ER.map(([n],i)=>`<button data-i="${i}">${n}</button>`).join('');
-function era(n){$('jr').innerHTML=D.jr.slice(ER[n][1],ER[n][2]).map(([y,t])=>`<div class="it"><span class="yr">${y}</span><p style="color:var(--fg)">${t}</p></div>`).join('');[...$('ert').children].forEach((b,i)=>b.classList.toggle('on',i===n))}
-$('ert').onclick=e=>{if(e.target.dataset.i)era(+e.target.dataset.i)};era(0);
+let JX=[];
+function jrn(){const all=D.jr.concat(JX.map(j=>[j.year,j.text,j.id]));$('jr').innerHTML=all.map(([y,t,id])=>`<div class="it"><span class="yr">${esc(y)}</span><p style="color:var(--fg)">${esc(t)}</p>${id&&ADM?`<button class="xdel" data-jid="${esc(id)}">Delete</button>`:''}</div>`).join('')}
+$('jr').onclick=e=>{const b=e.target.closest('[data-jid]');if(b&&DB)DB.doc('journey/'+b.dataset.jid).delete()};
 $('ex').innerHTML=D.ex.map(([k,t,d])=>`<div class="card"><span class="pill">${k}</span><h3 style="margin:8px 0 4px">${t}</h3><p style="margin:0;color:var(--mut);font-size:14px">${d}</p></div>`).join('');
 $('br').innerHTML=D.br.map(([n,r,d])=>`<div class="card"><b>${n}</b><small style="margin:4px 0 8px">${r}</small><span style="color:var(--mut);font-size:14px">${d}</span></div>`).join('');
 $('sg').innerHTML=D.sg.map(([t,s])=>`<div class="card"><b>♪ ${t}</b><small>${s}</small></div>`).join('');
@@ -161,15 +161,19 @@ const GC=["RIIZE debut, 2023","Inkigayo MC","Louis Vuitton","Samsung × CES 2026
 let ADM=false,DB=null,AS=null,PH={},NW=[];
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function gal(){$('gl').innerHTML=GC.map((c,i)=>{const u=PH[i];const ph=`<div class="ph"${u?` style="background-image:url(${esc(u)})"`:''}>${u?'':(ADM?'+ Add photo':'Photo coming soon')}</div>`;return ADM?`<label class="card pol"><input type="file" accept="image/*" hidden data-i="${i}">${ph}<span class="cap">${c}</span></label>`:`<div class="card pol">${ph}<span class="cap">${c}</span></div>`}).join('')}
-function news(){$('nw').innerHTML=NW.length?NW.map(n=>`<div class="card"><small>${esc(n.date||'')}</small><h3 style="margin:6px 0">${esc(n.title)}</h3><p style="margin:0;color:var(--mut);font-size:14px">${esc(n.body||'')}</p>${ADM?`<button class="xdel" data-id="${esc(n.id)}">Delete</button>`:''}</div>`).join(''):'<p style="color:var(--mut)">No news yet. Check back soon!</p>'}
-gal();news();
+function news(){$('nw').innerHTML=NW.length?NW.map(n=>`<div class="card"><small>${esc(n.date||'')}</small><h3 style="margin:6px 0">${esc(n.title)}</h3><p style="margin:0;color:var(--mut);font-size:14px">${esc(n.body||'')}</p>${ADM?`<button class="xdel" data-e="${esc(n.id)}">Edit</button> <button class="xdel" data-id="${esc(n.id)}">Delete</button>`:''}</div>`).join(''):'<p style="color:var(--mut)">No news yet. Check back soon!</p>'}
+gal();news();jrn();
 $('gl').addEventListener('change',async e=>{const f=e.target.files&&e.target.files[0],i=e.target.dataset.i;if(!f||!DB||!AS)return;try{const r=await AS.upload(f);await DB.doc('gallery/s'+i).set({url:r.url,id:r.id})}catch(x){alert('Upload failed')}});
-$('nw').onclick=e=>{const b=e.target.closest('.xdel');if(b&&DB)DB.doc('news/'+b.dataset.id).delete()};
-$('na').onclick=async()=>{const t=$('nt').value.trim();if(!t||!DB)return;try{await DB.collection('news').add({title:t,date:$('nd').value.trim(),body:$('nb').value.trim(),ts:Date.now()});$('nt').value=$('nd').value=$('nb').value=''}catch(x){alert('Could not post')}};
+let EDIT=null;
+$('nw').onclick=e=>{const b=e.target.closest('.xdel');if(!b||!DB)return;if(b.dataset.e){const n=NW.find(x=>x.id===b.dataset.e);if(!n)return;EDIT=n.id;$('nt').value=n.title||'';$('nd').value=n.date||'';$('nb').value=n.body||'';$('na').textContent='Save changes';$('nc').style.display='inline-block';go(S.findIndex(s=>s[0]==='admin'))}else if(b.dataset.id)DB.doc('news/'+b.dataset.id).delete()};
+function clr(){EDIT=null;$('nt').value=$('nd').value=$('nb').value='';$('na').textContent='Post news';$('nc').style.display='none'}
+$('nc').onclick=clr;
+$('na').onclick=async()=>{const t=$('nt').value.trim();if(!t||!DB)return;const d={title:t,date:$('nd').value.trim(),body:$('nb').value.trim()};try{if(EDIT)await DB.doc('news/'+EDIT).update(d);else await DB.collection('news').add({...d,ts:Date.now()});clr()}catch(x){alert('Could not save')}};
+$('ja').onclick=async()=>{const y=$('jy').value.trim(),t=$('jt').value.trim();if(!y||!t||!DB)return;try{await DB.collection('journey').add({year:y,text:t,ts:Date.now()});$('jy').value=$('jt').value=''}catch(x){alert('Could not add')}};
 (async()=>{try{const [u,d,a]=await Promise.all([claude.use('user'),claude.use('db'),claude.use('assets')]);DB=d;AS=a;ADM=!!(u&&u.canEdit());
-if(ADM){S.push(["admin","Admin","⚙️"]);$('adl').style.display='inline'}
-if(DB){DB.collection('gallery').onSnapshot(s=>{PH={};s.docs.forEach(x=>{PH[+x.id.slice(1)]=x.data().url});gal()});DB.collection('news').orderBy('ts','desc').onSnapshot(s=>{NW=s.docs.map(x=>({id:x.id,...x.data()}));news()})}
-gal();news();render()}catch(e){}})();
+if(ADM){S.push(["admin","Admin","⚙️"]);$('adl').style.display='inline';$('adl').onclick=e=>{e.preventDefault();go(S.findIndex(s=>s[0]==='admin'))}}
+if(DB){DB.collection('gallery').onSnapshot(s=>{PH={};s.docs.forEach(x=>{PH[+x.id.slice(1)]=x.data().url});gal()});DB.collection('news').orderBy('ts','desc').onSnapshot(s=>{NW=s.docs.map(x=>({id:x.id,...x.data()}));news()});DB.collection('journey').orderBy('ts','asc').onSnapshot(s=>{JX=s.docs.map(x=>({id:x.id,...x.data()}));jrn()})}
+gal();news();jrn();render()}catch(e){}})();
 render();
 </script>
 </body>
